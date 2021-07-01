@@ -35,7 +35,26 @@ CREATE TABLE Llamada(
     Duracion NUMERIC NOT NULL,
     Telefono_Destino VARCHAR(15) NOT NULL,
     Fue_Reportada CHAR(1) NOT NULL,
-    Fecha DATE NOT NULL,
+    Fecha DATE NOT NULL, 
     Telefono VARCHAR(15) NOT NULL,
     PRIMARY KEY(Id_Llamada)
 );
+
+ALTER TABLE Cliente_Empresa
+    ADD CONSTRAINT FK_Telefono
+    FOREIGN KEY(Telefono)
+    REFERENCES Cliente(Telefono);
+    
+ALTER TABLE Cliente_Empresa
+    ADD CONSTRAINT FK_Nit
+    FOREIGN KEY(Nit)
+    REFERENCES Empresa_Telefonia_Fija(Nit);
+    
+ALTER TABLE Llamada
+    ADD CONSTRAINT FK_TelefonoLlamada
+    FOREIGN KEY(Telefono)
+    REFERENCES Cliente(Telefono);
+    
+CREATE INDEX Cedula_Index ON Cliente(Cedula);
+
+    
