@@ -2,9 +2,11 @@ package com.tallertech.app.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -13,34 +15,35 @@ import javax.persistence.Table;
 public class EmpresaTelefoniaFija {
 	
 	@Id
-	@Column(name="NIT")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="CLIENTE_EMPRESA")
+	@Column(name="NIT", nullable = false)
 	String nit;
 	
-	@Column(name="RAZON_SOCIAL")
+	@Column(name="RAZON_SOCIAL", nullable = false)
 	String razon_social;
 	
-	@Column(name="FECHA_CREACION")
+	@Column(name="FECHA_CREACION", nullable = false)
 	Date fecha_creacion;
 	
-	@Column(name="ESTA_ACTIVO")
+	@Column(name="ESTA_ACTIVO", nullable = false)
 	char esta_activo;
 	
-	@Column(name="PERIODICIDAD_ARCHIVO")
+	@Column(name="PERIODICIDAD_ARCHIVO", nullable = false)
 	int periodicidad_archivo;
 	
-	@Column(name="PRIMER_PARAMETRO_ARCHIVO")
+	@Column(name="PRIMER_PARAMETRO_ARCHIVO", nullable = false)
 	int primer_param_archivo;
 	
-	@Column(name="SEGUNDO_PARAMETRO_ARCHIVO")
+	@Column(name="SEGUNDO_PARAMETRO_ARCHIVO", nullable = false)
 	int segundo_param_archivo;
 	
-	@Column(name="TERCER_PARAMETRO_ARCHIVO")
+	@Column(name="TERCER_PARAMETRO_ARCHIVO", nullable = false)
 	int tercer_param_archivo;
 	
-	@Column(name="CUARTO_PARAMETRO_ARCHIVO")
+	@Column(name="CUARTO_PARAMETRO_ARCHIVO", nullable = false)
 	int cuarto_param_archivo;
 	
-	@Column(name="QUINTO_PARAMETRO_ARCHIVO")
+	@Column(name="QUINTO_PARAMETRO_ARCHIVO", nullable = false)
 	int quinto_param_archivo;
 
 	
