@@ -1,6 +1,7 @@
 package com.tallertech.app.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,13 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="EMPRESA_TELEFONIA_FIJA")
 public class EmpresaTelefoniaFija {
 	
-	@Id
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="CLIENTE_EMPRESA")
+	@Id	
 	@Column(name="NIT", nullable = false)
 	String nit;
 	
@@ -46,6 +48,10 @@ public class EmpresaTelefoniaFija {
 	@Column(name="QUINTO_PARAMETRO_ARCHIVO", nullable = false)
 	int quinto_param_archivo;
 
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="empresaTelefoniaFija")
+	Set<ClienteEmpresa> convenios;
+	
 	
 	public EmpresaTelefoniaFija() {
 		super();
@@ -146,4 +152,14 @@ public class EmpresaTelefoniaFija {
 	public void setQuinto_param_archivo(int quinto_param_archivo) {
 		this.quinto_param_archivo = quinto_param_archivo;
 	}
+
+	public Set<ClienteEmpresa> getConvenios() {
+		return convenios;
+	}
+
+	public void setConvenios(Set<ClienteEmpresa> convenios) {
+		this.convenios = convenios;
+	}
+	
+	
 }
