@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,5 +61,17 @@ public class ClienteEmpresaController {
 	@GetMapping("/nit/{nit}")
 	public List<ClienteEmpresa> getConveniosConNit(@PathVariable String nit){
 		return clienteEmpresaService.findConveniosConNit(nit);
+	}
+	
+	@DeleteMapping("/registro/{idRegistro}")
+	public void deleteConvenio(@PathVariable long idRegistro) {
+		if(clienteEmpresaService.findConvenioById(idRegistro).isPresent()) {
+			ClienteEmpresa aBorrar = clienteEmpresaService.findConvenioById(idRegistro).get();
+			aBorrar.setEstaActivo('0');
+			clienteEmpresaService.saveConvenio(aBorrar);
+		}
+		else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontró nada con este nit");
+		}
 	}
 }

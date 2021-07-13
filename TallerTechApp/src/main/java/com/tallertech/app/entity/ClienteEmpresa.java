@@ -23,25 +23,25 @@ public class ClienteEmpresa {
 	@Column(name="ESTA_ACTIVO", nullable = false)
 	char estaActivo;
 	
-	@Column(name="TELEFONO", nullable = false)
-	String telefono;
-	
 	@ManyToOne
 	@JoinColumn(name="NIT", nullable = false)
-	private EmpresaTelefoniaFija empresaTelefoniaFija;
+	EmpresaTelefoniaFija empresaTelefoniaFija;
 
+	@ManyToOne
+	@JoinColumn(name="TELEFONO", nullable = false)
+	Cliente cliente;
 	
 	public ClienteEmpresa() {
 		super();
 	}
 
 
-	public ClienteEmpresa(long idRegistro, char estaActivo, String telefono,
+	public ClienteEmpresa(long idRegistro, char estaActivo, Cliente telefono,
 			EmpresaTelefoniaFija empresaTelefoniaFija) {
 		super();
 		this.idRegistro = idRegistro;
 		this.estaActivo = estaActivo;
-		this.telefono = telefono;
+		this.cliente = telefono;
 		this.empresaTelefoniaFija = empresaTelefoniaFija;
 	}
 
@@ -66,13 +66,13 @@ public class ClienteEmpresa {
 	}
 
 
-	public String getTelefono() {
-		return telefono;
+	public Cliente getTelefono() {
+		return cliente;
 	}
 
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setTelefono(Cliente telefono) {
+		this.cliente = telefono;
 	}
 
 
@@ -83,8 +83,6 @@ public class ClienteEmpresa {
 
 	public void setEmpresaTelefoniaFija(EmpresaTelefoniaFija empresaTelefoniaFija) {
 		this.empresaTelefoniaFija = empresaTelefoniaFija;
-	}
-	
-	
+	}	
 	
 }
