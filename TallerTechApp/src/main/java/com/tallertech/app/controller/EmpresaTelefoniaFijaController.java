@@ -89,11 +89,12 @@ public class EmpresaTelefoniaFijaController {
 	}
 	
 	@PutMapping("/{nit}")
-	public void actualizarEmpresa(@PathVariable String nit, @RequestBody EmpresaTelefoniaFija empresa) throws Exception{
+	public EmpresaTelefoniaFija actualizarEmpresa(@PathVariable String nit, @RequestBody EmpresaTelefoniaFija empresa) throws Exception{
 		if(empresaTelefoniaFijaService.findEmpresaByNit(nit).isPresent()) {
 			EmpresaTelefoniaFija aActualizar = empresaTelefoniaFijaService.findEmpresaByNit(nit).get();
 			aActualizar = empresa;
 			empresaTelefoniaFijaService.saveEmpresa(aActualizar);
+			return empresaTelefoniaFijaService.findEmpresaByNit(aActualizar.getNit()).get();
 		}
 		else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontró nada con este nit");

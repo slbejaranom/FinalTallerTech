@@ -35,7 +35,7 @@ public class Cliente {
 	String segundo_apellido;
 	
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="empresaTelefoniaFija")
+	@OneToMany(targetEntity=ClienteEmpresa.class ,cascade = CascadeType.ALL, mappedBy="cliente")
 	Set<ClienteEmpresa> convenios;
 	
 	public Cliente() {
@@ -100,6 +100,4 @@ public class Cliente {
 	public void setSegundo_apellido(String segundo_apellido) {
 		this.segundo_apellido = segundo_apellido;
 	}
-	
-	
 }

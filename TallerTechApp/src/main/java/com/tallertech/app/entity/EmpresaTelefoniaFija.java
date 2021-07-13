@@ -49,7 +49,7 @@ public class EmpresaTelefoniaFija {
 	int quinto_param_archivo;
 
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="empresaTelefoniaFija")
+	@OneToMany(targetEntity=ClienteEmpresa.class,cascade = CascadeType.ALL, mappedBy="empresaTelefoniaFija")
 	Set<ClienteEmpresa> convenios;
 	
 	

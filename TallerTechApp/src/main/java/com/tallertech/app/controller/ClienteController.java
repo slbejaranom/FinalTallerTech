@@ -50,15 +50,15 @@ public class ClienteController {
 	}
 	
 	@PostMapping
-	public void saveCliente(Cliente cliente) throws Exception{
+	public void saveCliente(@RequestBody Cliente cliente) throws Exception{
 		if(clienteService.findCliente(cliente.getTelefono()).isPresent()) {
 			throw new ResponseStatusException(HttpStatus.CONFLICT, "Ya existe un cliente con este número de teléfono");
 		}else {
 			
 			
 			try {
-				Integer.parseInt(cliente.getTelefono());
-				Integer.parseInt(cliente.getCedula());
+				Long.parseLong(cliente.getTelefono());
+				Long.parseLong(cliente.getCedula());
 			}catch(NumberFormatException ex) {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Revise el formato de los datos");
 			}
@@ -71,8 +71,8 @@ public class ClienteController {
 	public Cliente updateCliente(@PathVariable String telefono, @RequestBody Cliente cliente) throws Exception{
 		if(clienteService.findCliente(telefono).isPresent()) {
 			try {
-				Integer.parseInt(cliente.getTelefono());
-				Integer.parseInt(cliente.getCedula());
+				Long.parseLong(cliente.getTelefono());
+				Long.parseLong(cliente.getCedula());
 			}catch(NumberFormatException ex) {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Revise el formato de los datos");
 			}

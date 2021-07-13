@@ -31,7 +31,7 @@ public class LlamadaController {
 	}
 	
 	@PostMapping
-	public void postLlamada(Llamada llamada) throws Exception{
+	public void postLlamada(@RequestBody Llamada llamada) throws Exception{
 		if(llamadaService.getLlamadaById(llamada.getIdLlamada()).isPresent()) {
 			throw new ResponseStatusException(HttpStatus.CONFLICT,"La llamada con ese ID ya existe");
 		}else {
