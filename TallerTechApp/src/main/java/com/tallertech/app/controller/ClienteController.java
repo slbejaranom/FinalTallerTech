@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.tallertech.app.entity.Cliente;
-import com.tallertech.app.repository.ClienteRepository;
 import com.tallertech.app.service.ClienteService;
 
 @RestController
