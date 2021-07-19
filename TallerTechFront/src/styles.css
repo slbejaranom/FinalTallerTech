@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Balsamiq Sans Regular";
+    src: url("./public/BalsamiqSans-Regular.ttf");
+}
+@font-face {
+    font-family: "Balsamiq Sans Italic";
+    src: url("./public/BalsamiqSans-Italic.ttf");
+}
+@font-face {
+    font-family: "Balsamiq Sans Bold Italic";
+    src: url("./public/BalsamiqSans-BoldItalic.ttf");
+}
+@font-face {
+    font-family: "Balsamiq Sans Bold";
+    src: url("./public/BalsamiqSans-Bold.ttf");
+}
+body{
+    margin: 0px;    
+    font-family: 'Balsamiq Sans Regular';
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
