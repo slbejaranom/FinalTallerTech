@@ -1,0 +1,20 @@
+.saludo{
+    position:relative;
+    top: 10vh;
+    width:100%;
+}
+.saludo tr td{
+    text-align: center;
+    color: rgb(0, 119, 255);
+}
+.saludo tr td h1{
+    margin: 0;
+}
+.visual{
+    width:70vw;
+}
+.status{
+    position:relative;
+    top:20vh;
+    left:5vw;
+}

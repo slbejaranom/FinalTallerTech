@@ -3,7 +3,31 @@
     background-color: rgb(0, 119, 255);
     height:100vh;
     color:white;
-    text-align:center;
+    text-align:left;
+    display:block;
+}
+.blueBar ul{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.blueBar ul li{
+    width:100%;
+    position:relative;
+    border-bottom: 1px solid black;
+    height:10vh;
+}
+.blueBar ul li:hover{
+    background-color: rgb(41, 141, 255);
+    cursor: pointer;
+}
+.clicked{
+    background-color: rgb(107, 176, 255);
+}
+.blueBar ul li a{
+    width:100%;
+    position:absolute;
+    top:35%;
 }
 .all{
     display: flex;

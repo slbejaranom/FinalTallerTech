@@ -1,4 +1,11 @@
 <div class="all">
-  <div class="blueBar"></div>
+  <div class="blueBar">
+    <ul>
+      <li [ngClass]="{'clicked': homeClicked}"><a routerLink="/" (click)="homeClick()"><mat-icon>home</mat-icon>Principal</a></li>
+      <li [ngClass]="{'clicked': conveniosClicked}"><a routerLink="/Convenios" (click)="conveniosClick()"><mat-icon>people</mat-icon>Convenios</a></li>
+      <li [ngClass]="{'clicked': llamadasClicked}"><a routerLink="/Llamadas" (click)="llamadasClick()"><mat-icon>call</mat-icon>Llamadas</a></li>
+      <li [ngClass]="{'clicked': confiArchivoClicked}"><a routerLink="/ConfigArchivo" (click)="configArchivoClick()"><mat-icon>folder</mat-icon>Configuración de Archivo</a></li>
+    </ul>
+  </div>
   <router-outlet></router-outlet>
 </div>
