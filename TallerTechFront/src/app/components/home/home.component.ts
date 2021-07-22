@@ -19,5 +19,7 @@ export class HomeComponent implements OnInit {
     this.statusService.getStatus().subscribe( value => {
       this.status = value;
     });
+
+    
   }
 }

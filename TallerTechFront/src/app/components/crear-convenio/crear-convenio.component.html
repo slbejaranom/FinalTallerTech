@@ -4,11 +4,7 @@
         <table class="datos">
             <tr>
                 <td>NIT</td>
-                <td><input type="text" placeholder="Digite nit de la empresa" [(ngModel)]="entradaTexto"
-                        (keydown.enter)="buscarClicked()" /><button mat-icon-button color="primary"
-                        (click)="buscarClicked()">
-                        <mat-icon>search</mat-icon>
-                    </button></td>
+                <td><input type="text" placeholder="Digite nit de la empresa" [(ngModel)]="convenio.nit"/></td>
             </tr>
             <tr>
                 <td>Fecha de creación de convenio</td>
@@ -73,7 +69,8 @@
             </tr>
             <tr>
                 <td colspan="2" class="botonContainer">
-                    <button mat-raised-button color="primary" (click)="editarClicked()" class="boton">{{textoBoton}}</button>
+                    <button mat-raised-button color="primary" (click)="volverClicked()" class="boton">Volver</button>
+                    <button mat-raised-button color="primary" (click)="guardarClicked()" class="boton">{{textoBoton}}</button>
                 </td>
             </tr>
         </table>

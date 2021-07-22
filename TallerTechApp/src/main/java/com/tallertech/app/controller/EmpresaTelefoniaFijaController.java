@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.tallertech.app.entity.EmpresaTelefoniaFija;
+import com.tallertech.app.entity.Llamada;
 import com.tallertech.app.service.EmpresaTelefoniaFijaService;
 
 @RestController
@@ -77,6 +78,7 @@ public class EmpresaTelefoniaFijaController {
 						"Ya existe un convenio registrado con ese NIT.");
 			}else {
 				empresaTelefoniaFijaService.saveEmpresa(empresa);
+				throw new ResponseStatusException(HttpStatus.CREATED,"Se creó el registro");
 			}
 		}
 	}
@@ -97,6 +99,17 @@ public class EmpresaTelefoniaFijaController {
 	public EmpresaTelefoniaFija actualizarEmpresa(@PathVariable String nit, @RequestBody EmpresaTelefoniaFija empresa) throws Exception{
 		if(empresaTelefoniaFijaService.findEmpresaByNit(nit).isPresent()) {
 			EmpresaTelefoniaFija aActualizar = empresaTelefoniaFijaService.findEmpresaByNit(nit).get();
+			boolean condicion1 = (empresa.getPrimer_param_archivo() == empresa.getSegundo_param_archivo()) || (empresa.getPrimer_param_archivo() == empresa.getTercer_param_archivo()) || (empresa.getPrimer_param_archivo() == empresa.getCuarto_param_archivo()) || (empresa.getPrimer_param_archivo() == empresa.getQuinto_param_archivo());
+			boolean condicion2 = (empresa.getPrimer_param_archivo() == empresa.getSegundo_param_archivo()) || (empresa.getSegundo_param_archivo() == empresa.getTercer_param_archivo()) || (empresa.getSegundo_param_archivo() == empresa.getCuarto_param_archivo()) || (empresa.getSegundo_param_archivo() == empresa.getQuinto_param_archivo());
+			boolean condicion3 = (empresa.getPrimer_param_archivo() == empresa.getTercer_param_archivo()) || (empresa.getSegundo_param_archivo() == empresa.getTercer_param_archivo()) || (empresa.getTercer_param_archivo() == empresa.getCuarto_param_archivo()) || (empresa.getTercer_param_archivo() == empresa.getQuinto_param_archivo());
+			boolean condicion4 = (empresa.getPrimer_param_archivo() == empresa.getCuarto_param_archivo()) || (empresa.getSegundo_param_archivo() == empresa.getCuarto_param_archivo()) || (empresa.getTercer_param_archivo() == empresa.getCuarto_param_archivo()) || (empresa.getCuarto_param_archivo() == empresa.getQuinto_param_archivo());
+			boolean condicion5 = (empresa.getPrimer_param_archivo() == empresa.getQuinto_param_archivo()) || (empresa.getSegundo_param_archivo() == empresa.getQuinto_param_archivo()) || (empresa.getTercer_param_archivo() == empresa.getQuinto_param_archivo()) || (empresa.getCuarto_param_archivo() == empresa.getQuinto_param_archivo());
+			if(condicion1 || condicion2 || condicion3 || condicion4 || condicion5) {
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+						"Verifique el tipo de dato de todos los parámetros y que además estos existan en el Body que se envía.");
+			}else {
+				empresaTelefoniaFijaService.saveEmpresa(empresa);				
+			}
 			aActualizar = empresa;
 			empresaTelefoniaFijaService.saveEmpresa(aActualizar);
 			return empresaTelefoniaFijaService.findEmpresaByNit(aActualizar.getNit()).get();
@@ -104,5 +117,15 @@ public class EmpresaTelefoniaFijaController {
 		else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontró nada con este nit");
 		}		
+	}
+	
+	@GetMapping("/generarArchivo/{nit}")
+	public List<Llamada> generarArchivo(@PathVariable String nit){
+		if(empresaTelefoniaFijaService.findEmpresaByNit(nit).isPresent()) {
+			return empresaTelefoniaFijaService.llamadasSinReportarParaActualizar(nit);	
+		}		
+		else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontró nada con este nit");
+		}
 	}
 }

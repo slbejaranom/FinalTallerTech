@@ -13,4 +13,8 @@ export class LlamadaService {
   getLlamadasPorConvenio(nit : string){
     return this.httpClient.get<Llamada[]>(this.ruta+"/convenio/"+nit);
   }
+
+  getLlamadas(){
+    return this.httpClient.get<Llamada[]>(this.ruta);
+  }
 }

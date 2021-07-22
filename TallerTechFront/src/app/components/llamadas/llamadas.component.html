@@ -1,1 +1,62 @@
-<p>llamadas works!</p>
+<div class="visual">
+    <div class="aboveText">
+        Total de llamadas: {{ totalLlamadas }}
+    </div>
+    <fieldset class="filtro">
+        <legend>Filtro de búsqueda</legend>
+        <div class="searchBar">
+            <table>
+                <tr>
+                    <td>Desde <input type="date" [ngModel]="fechaInicio | date:'yyyy-MM-dd'" (ngModelChange)='fechaInicio = $event'/></td>
+                    <td>Hasta <input type="date" [ngModel]="fechaFin | date:'yyyy-MM-dd'" (ngModelChange)='fechaFin = $event'/></td>
+                    <td>Duración <input type="number" [disabled]="!activado" [(ngModel)]="duracionBuscada"/><mat-radio-group [(ngModel)]="opcionSeleccionada">
+                        <mat-radio-button color="primary" value="1" [disabled]="!activado" [checked]="opcionSeleccionada==1">Mayor</mat-radio-button>
+                        <mat-radio-button color="primary" value="2" [disabled]="!activado">Menor</mat-radio-button>
+                      </mat-radio-group><mat-slide-toggle color="primary" [(ngModel)]="activado"></mat-slide-toggle>
+                    </td>
+                    <td><button mat-raised-button color="primary" (click)="buscarLlamadas()">Buscar</button></td>
+                </tr>
+            </table>
+        </div>
+    </fieldset>
+
+    <fieldset class="llamadas" (click)="pasarPagina()">
+        <legend>Lista de llamadas</legend>
+        <table mat-table [dataSource] = "dataSource" >
+            <ng-container matColumnDef="idLlamada">
+                <th mat-header-cell *matHeaderCellDef>Id. Llamada</th>
+                <td mat-cell *matCellDef="let element">{{element.idLlamada}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="fecha">
+                <th mat-header-cell *matHeaderCellDef>Fecha</th>
+                <td mat-cell *matCellDef="let element">{{element.fecha | date}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="telefonoOrigen">
+                <th mat-header-cell *matHeaderCellDef>Tel. Origen</th>
+                <td mat-cell *matCellDef="let element">{{element.cliente.telefono}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="telefonoDestino">
+                <th mat-header-cell *matHeaderCellDef>Tel. Destino</th>
+                <td mat-cell *matCellDef="let element">{{element.telefonoDestino}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="duracion">
+                <th mat-header-cell *matHeaderCellDef>Duración</th>
+                <td mat-cell *matCellDef="let element">{{element.duracion}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="fueReportada">
+                <th mat-header-cell *matHeaderCellDef>Fue Reportada</th>
+                <td mat-cell *matCellDef="let element">{{element.fueReportada}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <mat-paginator [pageSizeOptions]="[8]" showFirstLastButtons></mat-paginator>
+        </table>
+    </fieldset>
+</div>

@@ -12,8 +12,12 @@ import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule, MatPaginatorModule, MatTableModule } from '@angular/material';
+import { MatButtonModule, MatPaginatorModule, MatRadioModule, MatSelectModule, MatSlideToggleModule, MatTableModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { ConversionPipe } from './components/convenios/ConversionPipe';
+import { CustomPipe } from './components/config-archivo/CustomPipe';
+import { ParamPipe } from './components/config-archivo/ParamPipe';
+import { CrearConvenioComponent } from './components/crear-convenio/crear-convenio.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     ConveniosComponent,
     LlamadasComponent,
-    ConfigArchivoComponent
+    ConfigArchivoComponent,
+    ConversionPipe,
+    CustomPipe,
+    ParamPipe,
+    CrearConvenioComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +40,10 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     FormsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSlideToggleModule,
+    MatRadioModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

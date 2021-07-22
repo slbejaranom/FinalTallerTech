@@ -1,0 +1,22 @@
+.visual{
+    width:70vw;
+    padding-top:5vh;
+    font-size: 1em;
+    color: rgb(0, 119, 255);
+}
+.visual .aboveText{
+    width:97%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.filtro{
+    margin-top:2vh;
+}
+.searchBar{
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.llamadas table{
+    width:100%;
+}
