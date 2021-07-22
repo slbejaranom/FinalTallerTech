@@ -44,6 +44,11 @@ public class EmpresaTelefoniaFijaController {
 		
 	}
 	
+	@GetMapping("/count")
+	public int contarConvenios() {
+		return empresaTelefoniaFijaService.getNumberOfEmpresas();
+	}
+	
 	@PostMapping
 	public void insertEmpresa(@RequestBody EmpresaTelefoniaFija empresa) throws Exception{
 		// Se divide el nit en el guión

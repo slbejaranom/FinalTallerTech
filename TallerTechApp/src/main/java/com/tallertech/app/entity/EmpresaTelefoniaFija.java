@@ -24,6 +24,9 @@ public class EmpresaTelefoniaFija {
 	@Column(name="RAZON_SOCIAL", nullable = false)
 	String razon_social;
 	
+	@Column(name="COSTO_SEGUNDO", nullable = false)
+	float costo_segundo;
+	
 	@Column(name="FECHA_CREACION", nullable = false)
 	Date fecha_creacion;
 	
@@ -59,7 +62,7 @@ public class EmpresaTelefoniaFija {
 	
 	public EmpresaTelefoniaFija(String nit, String razon_social, Date fecha_creacion, char esta_activo,
 			int periodicidad_archivo, int primer_param_archivo, int segundo_param_archivo, int tercer_param_archivo,
-			int cuarto_param_archivo, int quinto_param_archivo) {
+			int cuarto_param_archivo, int quinto_param_archivo, float costo_segundo) {
 		super();
 		this.nit = nit;
 		this.razon_social = razon_social;
@@ -71,6 +74,7 @@ public class EmpresaTelefoniaFija {
 		this.tercer_param_archivo = tercer_param_archivo;
 		this.cuarto_param_archivo = cuarto_param_archivo;
 		this.quinto_param_archivo = quinto_param_archivo;
+		this.costo_segundo = costo_segundo;
 	}
 
 	public String getNit() {
@@ -161,5 +165,12 @@ public class EmpresaTelefoniaFija {
 		this.convenios = convenios;
 	}
 	
-	
+
+	public float getCosto_segundo() {
+		return costo_segundo;
+	}
+
+	public void setCosto_segundo(float costo_segundo) {
+		this.costo_segundo = costo_segundo;
+	}
 }

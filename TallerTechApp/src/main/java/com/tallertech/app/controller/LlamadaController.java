@@ -54,4 +54,9 @@ public class LlamadaController {
 			throw new ResponseStatusException(HttpStatus.CONFLICT,"La llamada con ese ID ya existe");
 		}
 	}
+	
+	@GetMapping("/convenio/{nit}")
+	public List<Llamada> getLlamadasPorConvenio(@PathVariable String nit){
+		return llamadaService.obtenerLlamadasPorConvenio(nit);
+	}
 }

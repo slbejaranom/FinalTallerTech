@@ -1,7 +1,7 @@
 .saludo{
     position:relative;
     top: 10vh;
-    width:100%;
+    width:70vw;
 }
 .saludo tr td{
     text-align: center;
@@ -12,9 +12,15 @@
 }
 .visual{
     width:70vw;
+    margin: 0;
 }
 .status{
     position:relative;
     top:20vh;
-    left:5vw;
+    left:10vw;
+    color: rgb(0, 119, 255);
+    width:60vw;
+}
+.texto{
+    width:30%;
 }

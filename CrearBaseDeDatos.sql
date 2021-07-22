@@ -1,6 +1,7 @@
 CREATE TABLE Empresa_Telefonia_Fija(
     NIT VARCHAR(15) NOT NULL,
     Razon_Social VARCHAR(200) NOT NULL,
+    Costo_segundo FLOAT NOT NULL,
     Fecha_Creacion DATE NOT NULL,
     Esta_Activo CHAR(1) NOT NULL,
     Periodicidad_Archivo NUMERIC NOT NULL,

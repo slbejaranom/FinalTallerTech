@@ -1,0 +1,43 @@
+.visual{
+    width:70vw;
+    padding-top:5vh;
+    font-size: 1em;
+    color: rgb(0, 119, 255);
+}
+.visual .aboveMenu{
+    width:95%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.button{
+    text-align: right;
+    width:30%
+}
+.button button{
+    width:100%;
+}
+.textoInf{
+    width:27%;
+}
+.contConvenio{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:3vh;
+    width:92%;
+    border: 1px solid black;
+}
+.datos{
+    text-align:center;
+    color: rgb(0, 72, 155);
+    width:15vw;
+}
+td{
+    height: 6vh;
+}
+.listaLlamadas{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:3vh;
+    width:92%;
+    border: 1px solid black;
+}
