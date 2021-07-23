@@ -23,7 +23,7 @@ https://nodejs.org/es/
 Para compilar el backend y correrlo se utilizará gradle, se debe agregar a las variables del entorno su aplicativo
 https://gradle.org/next-steps/?version=7.1.1&format=bin
 
-Luego de agragarlo a las variables del entorno se abre un cmd y se ejecuta el comando
+Luego de agragarlo a las variables del entorno se abre un cmd en la carpeta TallerTechApp y se ejecuta el comando
 
 gradle build
 
@@ -31,4 +31,6 @@ Finalmente para correrlo se ejecuta
 
 gradle bootRun
 
-Así en la consola debería verse corriendo la aplicación de springboot para el backend
+Primero hay que esperar que corra el back para correr el front, una vez esté listo, se puede iniciar el front, se abre un CMD en la carpeta TallerTechFront y se ejecuta el siguiente comando:
+
+ng serve --open
